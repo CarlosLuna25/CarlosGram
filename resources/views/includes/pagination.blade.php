@@ -25,7 +25,22 @@
             </a>
         </div>
         <div class="likes">
-            <img src="{{ asset('images/hearts-grey.png') }}" alt="" />
+           <strong> {{count($image->likes)}} Likes </strong>
+           <?php $user_like=false; ?>
+           @foreach ($image->likes as $like )
+
+            @if ($like->user_id == Auth::user()->id)
+                <?php $user_like=true; ?>
+            @endif
+               
+           @endforeach
+           @if ($user_like)
+              <img src="{{ asset('images/hearts-red.png') }}" data-id="{{$image->id}}" class="btn-dislike" alt="" />
+                @else
+                <img src="{{ asset('images/hearts-grey.png') }}" data-id="{{$image->id}}" class="btn-like" alt="" />
+            @endif
+            
+            
         </div>
         <div class="comments">
             <a href="" class="btn btn-warning btn-sm btn-comments">

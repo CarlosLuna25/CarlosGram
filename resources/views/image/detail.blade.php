@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-           
+
             <div id="posts">
                 <div class="card pub_image_detail mb-5">
                     <div class="card-header">
@@ -23,7 +23,24 @@
                             <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" />
                         </div>
                         <div class="likes">
-                            <img src="{{ asset('images/hearts-grey.png') }}" alt="" />
+                            <strong> {{count($image->likes)}} Likes </strong>
+                            <?php $user_like=false; ?>
+                            @foreach ($image->likes as $like )
+
+                            @if ($like->user_id == Auth::user()->id)
+                                <?php $user_like=true; ?>
+                            @endif
+
+                            @endforeach
+                            @if ($user_like)
+                                <img src="{{ asset('images/hearts-red.png') }}" data-id="{{$image->id}}" class="btn-dislike"
+                                alt="" />
+                            @else
+                                <img src="{{ asset('images/hearts-grey.png') }}" data-id="{{$image->id}}" class="btn-like"
+                                alt="" />
+                            @endif
+
+
                         </div>
 
                         <div class="description mt-2 clearfix">
@@ -47,9 +64,11 @@
 
                                 <p>
                                     <textarea name="content" class="form-control" id=""
-                                       placeholder="leave a comment" ></textarea>
+                                        placeholder="leave a comment"></textarea>
                                     @if($errors->has('content'))
-                                    <span  class="form-control alert alert-danger {‌{ $errors->has('content') ? ' is-invalid' : '' }}"  role="alert">
+                                    <span
+                                        class="form-control alert alert-danger {‌{ $errors->has('content') ? ' is-invalid' : '' }}"
+                                        role="alert">
                                         <strong>{{ $errors->first('content')}}</strong>
                                     </span>
                                     @endif
@@ -59,17 +78,17 @@
                                 </button>
                             </form>
                             @foreach($image->comments as $comment)
-                                <div class="comment"> <strong class="cursive">
+                            <div class="comment"> <strong class="cursive">
                                     {{  '@'.$comment->user->nick.':' }}
                                 </strong>
-    
+
                                 {{$comment->content}}
                                 <span>{{'|     '.\FormatTime::LongTimeFilter($comment->created_at)}}</span>
                                 @if(Auth::check() && ($comment->user_id== Auth::user()->id || $comment->image->user_id==Auth::user()->id))
-                                <p><a href="{{route('comment.delete',['id'=>$comment->id])}}">Eliminar</a></p>
+                                    <p><a href="{{route('comment.delete',['id'=>$comment->id])}}">Eliminar</a></p>
                                 @endif
-                                </div>
-                                <hr>
+                            </div>
+                            <hr>
                             @endforeach
                         </div>
                     </div>

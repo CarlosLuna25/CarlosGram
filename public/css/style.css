@@ -80,7 +80,7 @@
     
 }
 .likes img{
-    width: 50%;
+    width: 25%;
 }
 .comments{
     padding: 2%;
@@ -95,4 +95,7 @@
 .clearfix{
     clear: both;
 
+}
+.btn-like, .btn-dislike{
+    margin-left: 8%;
 }
