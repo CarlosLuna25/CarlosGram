@@ -50,12 +50,49 @@
 
                             {{$image->description}}
                             <span>{{'| '.\FormatTime::LongTimeFilter($image->created_at)}}</span>
+                            <br>
+                            @if(Auth::user() && (Auth::user()->id==$image->user_id))
+                            <a href="{{ route('image.edit',['id'=>$image->id])}}" class="btn btn-primary p-1 mt-1">Editar</a>
+                                <!-- Button to Open the Modal -->
+                                <button type="button" class="btn btn-danger p-1 ml-2 mt-1" data-toggle="modal" data-target="#ConfirmModal">
+                                Eliminar
+                                </button>
+
+                                <!-- The Modal -->
+                                <div class="modal" id="ConfirmModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Confirmar eliminacion</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                     Seguro que deseas eliminar definitivamente esta imagen?...
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                        <a class="btn btn-success" href="{{ route('image.delete',['id'=>$image->id])}}"> Confirmar </a>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            
+                            
+                             @endif
                         </div>
                         <div class="comments">
                             <div calss="clearfix"></div>
                             @if (session('message'))
                             <div class="alert alert-success"> {{session('message')}} </div>
                             @endif
+                            
                             <h2>Comentarios({{count($image->comments)}})</h2>
                             <hr />
                             <form action="{{ route('comment.save') }}" method="post">

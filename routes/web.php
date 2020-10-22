@@ -50,10 +50,17 @@ Route::get('/user/avatar/{filename}', 'userController@getimg')->name('user.avata
 Route::get('/subir-imagen','imageController@create')->name('image.create');
 Route::post('/image/save', 'imageController@save')->name('image.save');
 Route::get('/image/file/{filename}', 'imageController@getimg')->name('image.file');
-Route::get('/imagen/{id}', 'imageController@detail')->name('image.detail');
+Route::get('/image/{id}', 'imageController@detail')->name('image.detail');
 Route::post('/comment/save', 'commentController@save')->name('comment.save');
 Route::get('/comment/delete/{id}', 'commentController@delete')->name('comment.delete');
 Route::get('/like/{image_id}', 'likeController@like')->name('like.save');
 Route::get('/dislike/{image_id}', 'likeController@dislike')->name('like.delete');
 Route::get('/likes', 'likeController@likes')->name('likes');
 Route::get('/profile/{id}', 'userController@profile')->name('profile');
+Route::get('/image/delete/{id}', 'imageController@delete')->name('image.delete');
+Route::get('/image/edit/{id}', 'imageController@edit')->name('image.edit');
+Route::post('/image/update', 'imageController@update')->name('image.update');
+
+
+
+
