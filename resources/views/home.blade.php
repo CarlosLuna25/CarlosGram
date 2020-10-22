@@ -8,7 +8,9 @@
             <div class="alert alert-success"> {{session('message')}} </div>
             @endif
          <div id="posts">
-           @include('includes.pagination')
+            @foreach ($images as $image )
+             @include('includes.pagination',['image'=>$image])
+            @endforeach
           </div> {{-- final de id posts --}}
           {{$images->links()}}
           

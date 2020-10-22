@@ -5,6 +5,14 @@
     overflow: hidden;
 
 }
+.avatar-container-profile{
+    margin-top: 1%;
+    float: left;
+    width: 150px;
+    height: 150px;
+    border-radius: 900px;
+    overflow: hidden;
+}
 .avatar{
     
     width: 100%;
@@ -98,4 +106,46 @@
 }
 .btn-like, .btn-dislike{
     margin-left: 8%;
+}
+.data-user, .data-user a{
+   color: #565f67;
+   text-decoration: none;
+}
+
+.user-info{
+    float: left;
+    margin-left: 3%;
+}
+.user-info h2{
+    margin-top: 1%;
+    font-size: 25px;
+    margin-bottom: 0%;
+    font-weight: bold;
+}
+.user-info h3{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0%;
+    padding: 0%;
+}
+.user-info p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.count-pub{
+    float: left;
+    margin-top: 1%;
+
+   
+}
+.fav{
+    margin-left: 4%;
+}
+
+.count-pub h*{
+    margin: 0%;
+}
+.user-info h4{
+    width: 450px;
+    margin-bottom: 10px;
 }

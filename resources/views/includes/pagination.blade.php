@@ -1,4 +1,4 @@
-@foreach ($images as $image )
+
 
 <div class="card pub_image mb-5">
     <div class="card-header">
@@ -12,7 +12,7 @@
         </div>
         @endif
         <div class="data-user">
-            {{  '@'.$image->user->nick.' ( '.$image->user->name.' '.$image->user->surname.' )' }}
+          <a  href="{{ route('profile',['id'=>$image->user->id]) }}" > {{  '@'.$image->user->nick.' ( '.$image->user->name.' '.$image->user->surname.' )' }} </a>
         </div>
     </div>
 
@@ -57,4 +57,4 @@
         </div>
     </div>
 </div>
-@endforeach
+

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -67,6 +69,13 @@ class userController extends Controller
         $file= Storage::disk('users')->get($filename);
         return new Response($file,200);
         
+
+    }
+    public function profile($id){
+        $user= User::find($id);
+        $likes= Like::where('user_id',$user->id)->get();
+        return view('user.profile',['user'=>$user,
+                                     'likes'=>$likes   ]);
 
     }
 }

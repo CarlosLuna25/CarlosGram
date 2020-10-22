@@ -60,6 +60,9 @@
                                 <a href="{{ route('home')}}" class="nav-link">Inicio </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('likes')}}" class="nav-link">Favoritas </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href=" {{route('image.create')}} " class="nav-link">Subir una Foto</a>
                             </li>
                             <li> @include('includes.avatar') </li>
@@ -69,7 +72,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                     <a class="dropdown-item" href="{{ route('logout') }}">
+                                     <a class="dropdown-item" href="{{ route('profile',['id'=> Auth::user()->id]) }}">
                                         Mi perfil 
                                     </a>
                                      <a class="dropdown-item" href="{{ route('config') }}">
