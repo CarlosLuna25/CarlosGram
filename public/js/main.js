@@ -49,4 +49,13 @@ window.addEventListener("load", function () {
         });
     }
     dislike();
+
+
+
+    //buscador
+    $('#buscador').submit(function(e){
+       
+        $(this).attr('action',url+'/users/'+$('#buscador #search').val());
+        
+    });
 });

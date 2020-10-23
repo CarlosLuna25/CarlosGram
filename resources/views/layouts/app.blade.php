@@ -30,10 +30,12 @@
                    <strong class=" toast" > CarlosGram </strong>
                 </a>
                  
-                  
-                   <input class="form-control w-25" style="margin-left:20%; heigth:10%;" placeholder="search an user.." type=text/>
-                  <a href=""  class="btn btn-sm btn-light float-right ">Search</a>
-                 
+                <form method="GET" action="{{route('user.index')}}" id="buscador">
+                <div class=" form-check-inline ml-5">
+                   <input name="search" id="search" class="form-control" style="margin-left:20%; heigth:10%;" placeholder="search an user.." type=text/>
+                  <input type="submit" value="submit"  class="btn btn-sm btn-light float-right "/>
+                </div>
+                </form>
                   
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                    
@@ -61,6 +63,9 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('likes')}}" class="nav-link">Favoritas </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('user.index')}}" class="nav-link">Gente </a>
                             </li>
                             <li class="nav-item">
                                 <a href=" {{route('image.create')}} " class="nav-link">Subir una Foto</a>
